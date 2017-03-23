@@ -28,9 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+# Application definitio
+# 以下、このプロジェクトで使用するアプリケーションの一覧。
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,6 +74,8 @@ WSGI_APPLICATION = 'django_tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# データベースの紐付けは、以下で実施する。
+# もしsqlite以外のデータベースを使う場合、事前に'CREATE DATABASE (dbname)'する必要があるようだ。
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -103,9 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
