@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 # from django.template import loader
 from django.views import generic
+from django.utils import timezone
 from polls.models import Question
 from polls.models import Choice
 
@@ -31,7 +32,8 @@ class IndexView(generic.ListView):
         """このメソッドをオーバーライドすることで、
         取得するDBモデルリストの結果を上書きできる。
         """
-        return Question.objects.order_by('-pub_date')[:5]
+        # 現在の日時以前のインスタンスを返す。
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
@@ -39,6 +41,9 @@ class DetailView(generic.DetailView):
     # DetailViewの場合は、'(app name)/(model name)_detail.html'という形式のテンプレートを使う。
     # ここでも、template_nameプロパティを定義することで、挙動を上書いている。
     template_name = 'polls/detail.html'
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):
