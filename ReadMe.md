@@ -18,4 +18,6 @@
 * マイグレーションの結果を表示する
   * `python manage.py sqlmigrate (アプリ名) (マイグレーション番号)`
 * Python対話環境の開始(djangoに必要な環境変数を設定した上で)
-  * python manage.py shell
+  * `python manage.py shell`
+* 特定アプリに対するテストの実施
+  * `python manage.py test (アプリ名)`
