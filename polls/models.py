@@ -16,6 +16,11 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    # 以下のプロパティは、管理サイト上でwas_published_recentlyメソッドを管理サイト上でカラムとして扱うための設定。
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    # was_published_recently.short_description = 'Published'
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
