@@ -1,3 +1,7 @@
+<!--この命令で、staticディレクトリ以下のファイルを読み込める。-->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
