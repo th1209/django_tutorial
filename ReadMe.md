@@ -21,3 +21,14 @@
   * `python manage.py shell`
 * 特定アプリに対するテストの実施
   * `python manage.py test (アプリ名)`
+
+## tips
+### django-debug-toolbar
+* あるページをロードするのにかかった時間や、実行したSQLを表示してくれるデバッグツール。
+* インストールは、公式ドキュメントが一番参考になる。
+  * [Django Debug Toolbar Installation](https://django-debug-toolbar.readthedocs.io/en/stable/installation.html)
+* また、特定の条件を満たさないと、debug-toolbarが表示されなくなるようだ(今回のサンプルではbodyで閉じていなくて詰まった)。
+  * グローバル変数DEBUGがTrue。
+  * レスポンスのタイプがtext/html。
+  * レスポンスとして返るhtmlが</boby>で閉じられていること。
+  * [Django Debug Toolbar Tips](https://django-debug-toolbar.readthedocs.io/en/stable/tips.html)
